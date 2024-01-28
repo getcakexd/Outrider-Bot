@@ -39,7 +39,3 @@ Feel free to customize and expand upon these commands to create a bot tailored t
 Contributing
 
 Contributions to Custom Discord Bot are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to submit a pull request or open an issue on GitHub.
-
-License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
