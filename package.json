@@ -1,0 +1,18 @@
+{
+  "name": "your_bot_name",
+  "version": "2.5.0",
+  "description": "The bot which makes pretty-much everything, and it's free",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "get cake",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "discord.js-poll-embed": "^1.0.2",
+    "ms": "^2.1.3",
+    "redis": "^3.0.2"
+  },
+  "keywords": []
+}
