@@ -20,10 +20,21 @@ module.exports = {
         const amount = interaction.options.getNumber('amount');
         const silent = interaction.options.getBoolean('silent');
 
-        interaction.channel.bulkDelete(amount);
-        await interaction.reply({content: `Successfully deleted ${amount} messages`, ephemeral: silent});
+        if (await interaction.channel.bulkDelete(amount)
+            .catch((error) => {
+                interaction.reply({content: "Unable to delete the messages", ephemeral: true})
 
-        console.log(`${amount} messages has been deleted by ${interaction.user.username} (ID: ${interaction.user.id})`);
-        console.log(" ");
+                console.log("Unable to delete the messages");
+                console.log(error.message);
+                console.log('');
+            })
+        ) {
+            await interaction.reply({content: `Successfully deleted ${amount} messages`, ephemeral: silent});
+
+            console.log(`${amount} messages has been deleted by ${interaction.user.username} (ID: ${interaction.user.id})`);
+            console.log(" ");
+        }
+
+
     }
 };
