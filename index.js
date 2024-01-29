@@ -64,7 +64,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 client.on('guildMemberAdd', member => {
     console.log(`${member.user.username} (ID: ${member.user.id}) joined the server!`);
-    let role = member.guild.roles.cache.find(role => role.name === "paraszt")
+    let role = member.guild.roles.cache.find(role => role.name === "YOUR_DEFAULT_ROLE_NAME")
     member.roles.add(role).then(r => console.log(`${member.user.username} (ID: ${member.user.id}) was given the ${role.name} role`));
     console.log('');
 });
