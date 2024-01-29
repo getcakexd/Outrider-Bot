@@ -19,10 +19,19 @@ module.exports = {
         const target = interaction.options.getUser('target');
         const reason = interaction.options.getString('reason') ?? 'No reason provided';
 
-        await interaction.reply(`Successfully banned ${target.username} for reason: ${reason}`);
-        await interaction.guild.members.ban(target, {reason});
+        if (await interaction.guild.members.ban(target, {reason})
+            .catch((error) => {
+                interaction.reply({content: `Can't ban ${target.username}`, ephemeral: true});
 
-        console.log(`${interaction.user.username} (ID: ${interaction.user.id}) banned ${target.username} (ID: ${target.id}) for "${reason}"`);
-        console.log(" ");
+                console.log(`Can't ban ${target.username}`);
+                console.log(error.message);
+                console.log("");
+            })
+        ) {
+            await interaction.reply(`Successfully banned ${target.username} for reason: ${reason}`);
+
+            console.log(`${interaction.user.username} (ID: ${interaction.user.id}) banned ${target.username} (ID: ${target.id}) for "${reason}"`);
+            console.log(" ");
+        }
     },
 };

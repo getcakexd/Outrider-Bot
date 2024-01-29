@@ -49,17 +49,35 @@ module.exports = {
 
 
         if (length === 0) {
-            await target.timeout(null);
-            await interaction.reply(`Successfully revoked timeout ${target.user.username} reason: ${reason}`);
+            if (await target.timeout(null)
+                .catch((error) => {
+                    interaction.reply({content: `Can't revoke timeout on ${target.user.username}`, ephemeral: true});
 
-            console.log(`${interaction.user.username} (ID: ${interaction.user.id}) revoked timeout on ${target.user.username} (ID: ${target.user.id}) reason: "${reason}"`);
-            console.log(" ");
+                    console.log(`Can't revoke timeout on ${target.user.username}`);
+                    console.log(error.message);
+                    console.log("");
+                })
+            ) {
+                await interaction.reply(`Successfully revoked timeout ${target.user.username} reason: ${reason}`);
+
+                console.log(`${interaction.user.username} (ID: ${interaction.user.id}) revoked timeout on ${target.user.username} (ID: ${target.user.id}) reason: "${reason}"`);
+                console.log(" ");
+            }
         } else {
-            await target.timeout(lengthMilliseconds, reason);
-            await interaction.reply(`Successfully timed out ${target.user.username} for ${length} ${measure} reason: ${reason}`);
+            if (await target.timeout(lengthMilliseconds, reason)
+                .catch((error) => {
+                    interaction.reply({content: `Can't timeout ${target.user.username}`, ephemeral: true});
 
-            console.log(`${interaction.user.username} (ID: ${interaction.user.id}) timed out ${target.user.username} (ID: ${target.user.id}) for ${length} ${measure} reason: "${reason}"`);
-            console.log(" ");
+                    console.log(`Can't timeout ${target.user.username}`);
+                    console.log(error.message);
+                    console.log("");
+                })
+            ) {
+                await interaction.reply(`Successfully timed out ${target.user.username} for ${length} ${measure} reason: ${reason}`);
+
+                console.log(`${interaction.user.username} (ID: ${interaction.user.id}) timed out ${target.user.username} (ID: ${target.user.id}) for ${length} ${measure} reason: "${reason}"`);
+                console.log(" ");
+            }
         }
     },
 };

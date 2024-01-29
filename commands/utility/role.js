@@ -33,30 +33,52 @@ module.exports = {
                 interaction.reply({content: `${target.user.username} already has ${role.name}`, ephemeral: true});
 
             } else {
-                target.roles.add(role).catch((error) => {
-                    console.log(error.message);
-                });
-                console.log(`${target.user.username} (ID: ${target.user.id}) was given the ${role.name} role`)
-                console.log('');
-                await interaction.reply({
-                    content: `${target.user.username} was given the ${role.name} role`,
-                    ephemeral: true
-                });
+                if (await target.roles.add(role)
+                    .catch((error) => {
+                        interaction.reply({
+                            content: `${target.user.username} cant get the ${role.name} role`,
+                            ephemeral: true
+                        });
+
+                        console.log(`${target.user.username} cant get the ${role.name} role`);
+                        console.log(error.message);
+                        console.log('');
+                    })
+                ) {
+                    await interaction.reply({
+                        content: `${target.user.username} was given the ${role.name} role`,
+                        ephemeral: true
+                    });
+
+                    console.log(`${target.user.username} (ID: ${target.user.id}) was given the ${role.name} role`)
+                    console.log('');
+                }
             }
         } else {
             if (!target.roles.cache.has(role.id)) {
                 interaction.reply({content: `${target.user.username} doesn't have ${role.name}`, ephemeral: true});
 
             } else {
-                target.roles.remove(role).catch((error) => {
-                    console.log(error.message);
-                });
-                console.log(`${target.user.username} (ID: ${target.user.id}) lost the ${role.name} role`)
-                console.log('');
-                await interaction.reply({
-                    content: `${target.user.username} lost the ${role.name} role`,
-                    ephemeral: true
-                });
+                if (await target.roles.remove(role)
+                    .catch((error) => {
+                        interaction.reply({
+                            content: `${target.user.username} cant lose the ${role.name} role`,
+                            ephemeral: true
+                        });
+
+                        console.log(`${target.user.username} cant lose the ${role.name} role`);
+                        console.log(error.message);
+                        console.log('');
+                    })
+                ) {
+                    await interaction.reply({
+                        content: `${target.user.username} lost the ${role.name} role`,
+                        ephemeral: true
+                    });
+
+                    console.log(`${target.user.username} (ID: ${target.user.id}) lost the ${role.name} role`)
+                    console.log('');
+                }
             }
         }
     },
