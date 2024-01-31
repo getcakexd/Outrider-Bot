@@ -64,9 +64,23 @@ client.on(Events.InteractionCreate, async interaction => {
 
 client.on('guildMemberAdd', member => {
     console.log(`${member.user.username} (ID: ${member.user.id}) joined the server!`);
-    let role = member.guild.roles.cache.find(role => role.name === "YOUR_DEFAULT_ROLE_NAME")
-    member.roles.add(role).then(r => console.log(`${member.user.username} (ID: ${member.user.id}) was given the ${role.name} role`));
-    console.log('');
+    const role = member.guild.roles.cache.find(role => role.name === 'YOUR_DEFAULT_ROLE_NAME');
+    member.roles.add(role).then(r => {
+        console.log(`${member.user.username} (ID: ${member.user.id}) was given the ${role.name} role`);
+        console.log('');
+    });
+
+    const welcomeEmbed = new EmbedBuilder()
+        .setColor('Random')
+        .setThumbnail(member.displayAvatarURL())
+        .setTitle(`Welcome to the server ${member.user.username}!`)
+        .setDescription('Have a great time.')
+        .setTimestamp();
+    const channel = client.channels.cache.get('YOUR_WELCOME_CHANNEL');
+    channel.send({content: " ", embeds: [welcomeEmbed]}).catch(error => {
+        console.log('[WARNING] Something happened while sending welcome message');
+        console.log(`[WARNING] ${error.message}`);
+    });
 });
 
 client.once(Events.ClientReady, readyClient => {
