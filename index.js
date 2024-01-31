@@ -95,4 +95,7 @@ client.once(Events.ClientReady, readyClient => {
     console.log(' ');
 });
 
-client.login(token).then();
+client.login(token).catch(error => {
+    console.log('[WARNING] something happened on startup');
+    console.log(`[WARNING] ${error.message}`);
+});
