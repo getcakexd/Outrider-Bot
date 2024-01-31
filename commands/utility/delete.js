@@ -24,8 +24,8 @@ module.exports = {
             .catch((error) => {
                 interaction.reply({content: "Unable to delete the messages", ephemeral: true})
 
-                console.log("Unable to delete the messages");
-                console.log(error.message);
+                console.log("[WARNING] Unable to delete the messages");
+                console.log(`[WARNING] ${error.message}`);
                 console.log('');
             })
         ) {

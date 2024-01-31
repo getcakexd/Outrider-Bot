@@ -29,7 +29,7 @@ module.exports = {
 
         }).catch(error => {
             console.log(`[WARNING] ${interaction.user.globalName} (ID: ${interaction.user.id}) tried to generate a invite to ${interaction.channel} but was unsuccessful`)
-            console.log("   Error message: " + error.message);
+            console.log(`[WARNING] ${error.message}`);
             console.log(" ");
         });
 

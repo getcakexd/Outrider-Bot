@@ -40,8 +40,8 @@ module.exports = {
                             ephemeral: true
                         });
 
-                        console.log(`${target.user.username} cant get the ${role.name} role`);
-                        console.log(error.message);
+                        console.log(`[WARNING] ${target.user.username} cant get the ${role.name} role`);
+                        console.log(`[WARNING] ${error.message}`);
                         console.log('');
                     })
                 ) {
@@ -66,8 +66,8 @@ module.exports = {
                             ephemeral: true
                         });
 
-                        console.log(`${target.user.username} cant lose the ${role.name} role`);
-                        console.log(error.message);
+                        console.log(`[WARNING] ${target.user.username} cant lose the ${role.name} role`);
+                        console.log(`[WARNING] ${error.message}`);
                         console.log('');
                     })
                 ) {

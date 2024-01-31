@@ -53,12 +53,12 @@ module.exports = {
                 .catch((error) => {
                     interaction.reply({content: `Can't revoke timeout on ${target.user.username}`, ephemeral: true});
 
-                    console.log(`Can't revoke timeout on ${target.user.username}`);
-                    console.log(error.message);
+                    console.log(`[WARNING] Can't revoke timeout on ${target.user.username}`);
+                    console.log(`[WARNING] ${error.message}`);
                     console.log("");
                 })
             ) {
-                await interaction.reply(`Successfully revoked timeout ${target.user.username} reason: ${reason}`);
+                await interaction.reply(`Successfully revoked timeout on ${target.user.username} reason: ${reason}`);
 
                 console.log(`${interaction.user.username} (ID: ${interaction.user.id}) revoked timeout on ${target.user.username} (ID: ${target.user.id}) reason: "${reason}"`);
                 console.log(" ");
@@ -68,8 +68,8 @@ module.exports = {
                 .catch((error) => {
                     interaction.reply({content: `Can't timeout ${target.user.username}`, ephemeral: true});
 
-                    console.log(`Can't timeout ${target.user.username}`);
-                    console.log(error.message);
+                    console.log(`[WARNING] Can't timeout ${target.user.username}`);
+                    console.log(`[WARNING] ${error.message}`);
                     console.log("");
                 })
             ) {

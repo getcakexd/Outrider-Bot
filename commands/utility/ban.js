@@ -23,8 +23,8 @@ module.exports = {
             .catch((error) => {
                 interaction.reply({content: `Can't ban ${target.username}`, ephemeral: true});
 
-                console.log(`Can't ban ${target.username}`);
-                console.log(error.message);
+                console.log(`[WARNING] Can't ban ${target.username}`);
+                console.log(`[WARNING] ${error.message}`);
                 console.log("");
             })
         ) {

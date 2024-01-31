@@ -20,9 +20,9 @@ module.exports = {
         const message = interaction.options.getString('message');
 
         target.send(message)
-            .catch(async (err) => {
-                console.log(`Something went wrong while trying to dm ${target.user.username} (ID: ${target.user.id})`);
-                console.log(err);
+            .catch(async (error) => {
+                console.log(`[WARNING] Something went wrong while trying to dm ${target.user.username} (ID: ${target.user.id})`);
+                console.log(`[WARNING] ${error.message}`);
                 console.log('');
             });
 

@@ -23,8 +23,8 @@ module.exports = {
             .catch((error) => {
                 interaction.reply({content: `Can't kick ${target.username}`, ephemeral: true});
 
-                console.log(`Can't kick ${target.username}`);
-                console.log(error.message);
+                console.log(`[WARNING] Can't kick ${target.username}`);
+                console.log(`[WARNING] ${error.message}`);
                 console.log("");
             })
         ) {
