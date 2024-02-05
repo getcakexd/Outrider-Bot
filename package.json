@@ -1,18 +1,18 @@
 {
-  "name": "your_bot_name",
-  "version": "2.5.0",
+  "name": "YOUR_BOT_NAME",
+  "version": "2.6.0",
   "description": "The bot which makes pretty-much everything, and it's free",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node deploy-commands.js && node index.js",
+    "deploy": "node deploy-commands.js"
   },
-  "author": "get cake",
+  "author": "YOUR_NAME",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.7",
     "discord.js": "^14.14.1",
-    "discord.js-poll-embed": "^1.0.2",
-    "ms": "^2.1.3",
-    "redis": "^3.0.2"
+    "ms": "^2.1.3"
   },
   "keywords": []
 }
