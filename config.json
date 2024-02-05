@@ -1,5 +1,10 @@
 {
   "token": "your-token-goes-here",
   "clientId": "your-application-id-goes-here",
-  "guildId": "your-server-id-goes-here"
+  "guildId": "your-server-id-goes-here",
+  "ticketCategoryName": "your-ticket-category-name-goes-here",
+  "welcomeRoleName": "your-default-role-name-goes-here",
+  "welcomeChannelId": "your-welcome-channel-id-goes-here",
+  "moderationLogChannelId": "your-moderation-log-channel-id-goes-here",
+  "botName": "your-bot-name-goes-here"
 }

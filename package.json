@@ -1,13 +1,12 @@
 {
-  "name": "YOUR_BOT_NAME",
-  "version": "2.6.0",
-  "description": "The bot which makes pretty-much everything, and it's free",
+  "name": "your-bot-name-goes-here",
+  "version": "your-bot-version-goes-here",
+  "description": "your-description-goes-here",
   "main": "index.js",
   "scripts": {
-    "start": "node deploy-commands.js && node index.js",
-    "deploy": "node deploy-commands.js"
+    "start": "node deploy-commands.js && node index.js"
   },
-  "author": "YOUR_NAME",
+  "author": "your-name-goes-here",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.7",

@@ -1,7 +1,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const {Client, Collection, Events, GatewayIntentBits} = require('discord.js');
-const {token} = require('./config.json');
+const {Client, Collection, Events, GatewayIntentBits, EmbedBuilder, AuditLogEvent} = require('discord.js');
+const {token, welcomeRoleName, welcomeChannelId, moderationLogChannelId, botName} = require('./config.json');
+const {version} = require('./package.json');
 
 const client = new Client(
     {
@@ -13,12 +14,13 @@ const client = new Client(
             GatewayIntentBits.GuildMessageTyping,
             GatewayIntentBits.DirectMessages,
             GatewayIntentBits.DirectMessageReactions,
-            GatewayIntentBits.DirectMessageTyping
+            GatewayIntentBits.DirectMessageTyping,
         ]
     });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
+
 const commandFolders = fs.readdirSync(foldersPath);
 for (const folder of commandFolders) {
     const commandsPath = path.join(foldersPath, folder);
@@ -40,6 +42,7 @@ client.on(Events.InteractionCreate, interaction => {
     // console.log(interaction);
 });
 
+//command execution
 client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
@@ -62,21 +65,25 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
+
 client.on('guildMemberAdd', member => {
+
+    //welcome role
     console.log(`${member.user.username} (ID: ${member.user.id}) joined the server!`);
-    const role = member.guild.roles.cache.find(role => role.name === 'YOUR_DEFAULT_ROLE_NAME');
+    const role = member.guild.roles.cache.find(role => role.name === welcomeRoleName);
     member.roles.add(role).then(r => {
         console.log(`${member.user.username} (ID: ${member.user.id}) was given the ${role.name} role`);
         console.log('');
     });
 
+    //welcome message
     const welcomeEmbed = new EmbedBuilder()
         .setColor('Random')
         .setThumbnail(member.displayAvatarURL())
         .setTitle(`Welcome to the server ${member.user.username}!`)
         .setDescription('Have a great time.')
         .setTimestamp();
-    const channel = client.channels.cache.get('YOUR_WELCOME_CHANNEL');
+    const channel = client.channels.cache.get(welcomeChannelId);
     channel.send({content: " ", embeds: [welcomeEmbed]}).catch(error => {
         console.log('[WARNING] Something happened while sending welcome message');
         console.log(`[WARNING] ${error.message}`);
@@ -87,7 +94,7 @@ client.once(Events.ClientReady, readyClient => {
     console.log(' ');
     console.log('------------------------------------------');
     console.log(' ');
-    console.log('YOUR_BOT_NAME is now online');
+    console.log(`${botName} v${version} is now online`);
     console.log(' ');
     console.log('------------------------------------------');
     console.log(' ');
