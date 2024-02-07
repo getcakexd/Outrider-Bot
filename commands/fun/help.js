@@ -4,15 +4,17 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('help')
         .setDescription('lists the commands')
-    ,
+        .setDMPermission(false),
     async execute(interaction) {
-        let embed;
         if (interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
-            embed = createModHelpEmbed()
+            const modEmbed = createModHelpEmbed();
+            const embed = createUserHelpEmbed();
+            await interaction.reply({content: " ", embeds: [embed], ephemeral: true})
+            await interaction.followUp({content: " ", embeds: [modEmbed], ephemeral: true})
         } else {
-            embed = createUserHelpEmbed();
+            const embed = createUserHelpEmbed();
+            await interaction.reply({content: " ", embeds: [embed], ephemeral: true})
         }
-        await interaction.reply({content: " ", embeds: [embed], ephemeral: true})
 
         console.log(`${interaction.user.username} (ID: ${interaction.user.id}) used /help`)
     },
@@ -26,12 +28,16 @@ function createModHelpEmbed() {
         .setAuthor({name: "Outrider Knight#3668"})
         .addFields(
             {
-                name: `/invite`,
-                value: 'Creates a invite for this channel'
+                name: `/echo`,
+                value: 'Echos the given message to the channel'
             },
             {
-                name: `/help`,
-                value: 'Lists all the commands'
+                name: `/dm`,
+                value: 'Send a direct message to the tagged person'
+            },
+            {
+                name: `/ticket`,
+                value: 'Take, close or delete a ticket'
             },
             {
                 name: `/kick`,
@@ -46,6 +52,10 @@ function createModHelpEmbed() {
                 value: 'Times out the tagged member for the given given amount of time with the given reason'
             },
             {
+                name: '/lockdown',
+                value: 'Times out every user for the given amount of time'
+            },
+            {
                 name: `/role`,
                 value: 'Adds/removes the chosen role to/from the tagged member'
             },
@@ -54,16 +64,12 @@ function createModHelpEmbed() {
                 value: 'Deletes the given amount of messages in the channel'
             },
             {
-                name: `/dm`,
-                value: 'Send a direct message to the tagged person'
+                name: `/channel-delete`,
+                value: 'Delete a channel by name or id'
             },
             {
-                name: `/echo`,
-                value: 'Echos the given message to the channel'
-            },
-            {
-                name: `/poll`,
-                value: 'Create a poll with up to 6 options'
+                name: `/channel-create`,
+                value: 'Create a new channel'
             },
         );
 }
@@ -76,6 +82,10 @@ function createUserHelpEmbed() {
         .setAuthor({name: "Outrider Knight#3668"})
         .addFields(
             {
+                name: `/ping`,
+                value: 'Check if the bot is online'
+            },
+            {
                 name: `/invite`,
                 value: 'Creates a invite for this channel'
             },
@@ -86,6 +96,34 @@ function createUserHelpEmbed() {
             {
                 name: `/poll`,
                 value: 'Create a poll with up to 6 options'
+            },
+            {
+                name: `/meme`,
+                value: 'Sends a random meme'
+            },
+            {
+                name: `/dankmeme`,
+                value: 'Sends a random dank meme'
+            },
+            {
+                name: `/ticket-create`,
+                value: 'Creates a dedicated ticket for your problem'
+            },
+            {
+                name: `/nsfw`,
+                value: 'Give yourself nsfw rank, or remove it'
+            },
+            {
+                name: `/butt`,
+                value: 'Sends a butt pic'
+            },
+            {
+                name: `/boobs`,
+                value: 'Sends a boob pic'
+            },
+            {
+                name: `/pussy`,
+                value: 'Sends a pussy pic'
             },
         );
 }

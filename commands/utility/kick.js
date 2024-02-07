@@ -13,7 +13,7 @@ module.exports = {
             .setName('reason')
             .setDescription('The reason for banning')
         )
-        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
+        .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
         .setDMPermission(false),
     async execute(interaction) {
         const target = interaction.options.getUser('target');

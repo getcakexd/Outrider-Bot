@@ -14,7 +14,8 @@ module.exports = {
             .setDescription('The message to send')
             .setRequired(true)
         )
-        .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
+        .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
+        .setDMPermission(false),
     async execute(interaction) {
         const target = interaction.options.getMember('target');
         const message = interaction.options.getString('message');

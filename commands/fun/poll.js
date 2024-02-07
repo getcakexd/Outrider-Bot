@@ -64,7 +64,8 @@ module.exports = {
             .setDescription('Option 6 of 6')
             .setMaxLength(50)
             .setRequired(false)
-        ),
+        )
+        .setDMPermission(false),
     async execute(interaction) {
         await interaction.deferReply({ephemeral: true});
         let options = await interaction.options.data;

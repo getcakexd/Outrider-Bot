@@ -9,7 +9,7 @@ module.exports = {
             .setDescription('Message to send')
             .setRequired(true)
         )
-    ,
+        .setDMPermission(false),
     async execute(interaction) {
         const message = interaction.options.getString("message");
         interaction.channel.send(message);

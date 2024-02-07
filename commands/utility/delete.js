@@ -11,14 +11,13 @@ module.exports = {
         )
         .addBooleanOption(option => option
             .setName('silent')
-            .setDescription('whether to send a confirmation reply or not ')
-            .setRequired(true)
+            .setDescription('Whether only you see the confirmation reply or everyone (only you by default)')
         )
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
         .setDMPermission(false),
     async execute(interaction) {
         const amount = interaction.options.getNumber('amount');
-        const silent = interaction.options.getBoolean('silent');
+        const silent = interaction.options.getBoolean('silent') ?? true;
 
         if (await interaction.channel.bulkDelete(amount)
             .catch((error) => {
@@ -34,7 +33,5 @@ module.exports = {
             console.log(`${amount} messages has been deleted by ${interaction.user.username} (ID: ${interaction.user.id})`);
             console.log(" ");
         }
-
-
     }
 };

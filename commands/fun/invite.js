@@ -15,7 +15,8 @@ module.exports = {
         .addBooleanOption(option => option
             .setName("temp")
             .setDescription("Granting temporary membership if true")
-        ),
+        )
+        .setDMPermission(false),
     async execute(interaction) {
         const maxAge = interaction.options.getNumber("length") * 3600 || 86400;
         const maxUses = interaction.options.getNumber("uses") || 1;

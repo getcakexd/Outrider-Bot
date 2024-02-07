@@ -23,7 +23,8 @@ module.exports = {
             .setDescription('Name of the role to add/remove')
             .setRequired(true)
         )
-        .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles),
+        .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
+        .setDMPermission(false),
     async execute(interaction) {
         const method = interaction.options.getString('method');
         const target = interaction.options.getMember('target');
