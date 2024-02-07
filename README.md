@@ -33,12 +33,22 @@ After
     "start": "node index.js"
   },
 ```
-Due to the reddit api the ``/meme`` and ``/dankmeme`` commands don't work while the bot runs on a cloud platform.
+Important:
+- To deploy the bot successfully move the ``Procfile`` to the main directory.
+- Due to the reddit api the ``/meme`` and ``/dankmeme`` commands don't work while the bot runs on a cloud platform.
 
 
-Useful links
+
+Other Useful things
 ------------------
-To get started on your discord bot click [here](https://discordjs.guide)
+
+For auto start up on your local windows machine:
+1. Press ``Windows key + R``
+2. Type in ``shell:startup`` and hit ``enter``
+3. Copy ``startup.bat`` into the folder
+4. Open the file in notpad and change the directory path to lead to your project
+5. Save the file and close it along with the File Explorer
+   
 
 For the official discord documentation click [here](https://discord.js.org/docs/packages/discord.js/14.14.1)
 
