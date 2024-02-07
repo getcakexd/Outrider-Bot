@@ -1,50 +1,45 @@
-Outrider Knight
+About Outrider Knight
 ------------------
-Welcome to Outrider Knight, a simple Discord bot with basic features designed to serve as a foundation for creating customized bots tailored to your needs!
+Welcome to Outrider Knight!
 
-Overview
-------------------
-Outrider Knight Bot provides a starting point for developers looking to create their own personalized Discord bots. With its basic features and modular structure, this bot serves as a flexible template that can be easily extended and customized to suit various use cases.
+Outrider Knight is a simple Discord bot with basic features using slash commands.
 
-Features
-------------------
-Basic Functionality: Includes essential bot features such as command handling, event listeners, and basic message responses.
-Modular Design: Built with a modular architecture, allowing developers to add or remove features as needed.
-Customizable Commands: Easily create and customize bot commands to fit your server's unique requirements.
-Scalable: Designed to scale with your project, enabling seamless integration of additional functionalities and third-party APIs.
+However this bot doesn't support multiple server use.
+
+Feel free to customize it to your needs.
 
 Getting Started
 ------------------
-To get started with Custom Discord Bot, follow these steps:
+1. Follow the official [discord.js guide](https://discordjs.guide) to create your bot.
+2. Fill out all the information in the ``config.json`` and ``package.json`` files.
+3. Clone this repository and run ``npm install`` in the direcotry of your project to download all the needed dependencies.
+4. Start running your bot with the ``npm start`` command.
+5. Finally run ``/help`` in your server to see all the commands.
 
-Clone the Repository: Clone this repository to your local machine using git clone.
-
-Install Dependencies: Navigate to the project directory and install dependencies using npm install.
-
-Set Up Configuration: Create a .env file in the project root and add your Discord bot token.
-
-Customize Your Bot: Modify the bot's code in index.js to add new commands, event handlers, or features according to your requirements.
-
-Run the Bot: Start the bot using node deployücommands, then node index.js. Your bot should now be online and ready to respond to commands in your Discord server!
-
-Commands
+Deployment
 ------------------
-Here are some basic commands to get you started with Custom Discord Bot:
+For deployment on cloud platform (e.g.: [Heroku](https://www.heroku.com)) make this change in the package.json file:
 
-/help: Lists all the commands avaible to you.
+Before
+```
+  "scripts": {
+    "start": "node deploy-commands.js && node index.js"
+  },
+```
+After
+```
+  "scripts": {
+    "build": "node deploy-commands.js",
+    "start": "node index.js"
+  },
+```
+Due to the reddit api the ``/meme`` and ``/dankmeme`` commands don't work while the bot runs on a cloud platform.
 
-/poll: Create a poll with up to 6 options.
-
-/invite: Create a invite to the channel with the given paramteres.
-
-Feel free to customize and expand upon these commands to create a bot tailored to your server's needs!
-
-Contributing
-------------------
-Contributions to Outrider Knight Bot are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to submit a pull request or open an issue on GitHub.
 
 Useful links
 ------------------
-To get started on your discord bot: https://discordjs.guide
+To get started on your discord bot click [here](https://discordjs.guide)
 
-Discord.js docs: https://discord.js.org/docs/packages/discord.js/main
+For the official discord documentation click [here](https://discord.js.org/docs/packages/discord.js/14.14.1)
+
+Check out Node.js [here](https://nodejs.org)
