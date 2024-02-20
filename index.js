@@ -325,14 +325,24 @@ client.on("messageDeleteBulk", async (messageDeleteBulk) => {
         .setDescription(`${messageDeleteBulk.size} messages has been deleted\n\n Messages:`)
         .setColor("#ff0000")
 
-    messageDeleteBulk.forEach(message => {
-        embed.addFields(
-            {
-                name: ' ',
-                value: message
-            },
-        )
-    });
+    try {
+        for (let message of messageDeleteBulk.values()) {
+            let content = message.content;
+            if (message.embeds.length !== 0) {
+                content = '[Embed]'
+            }
+            embed.addFields(
+                {
+                    name: ' ',
+                    value: content
+                },
+            )
+        }
+    } catch (error) {
+        console.log("[WARNING] Error occurred while making an embed");
+        console.log(`[WARNING] ${error.message}`);
+        console.log('');
+    }
 
     sendLogEmbed(embed);
 });
