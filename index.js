@@ -319,6 +319,23 @@ client.on("messageDelete", async (messageDelete) => {
 
     sendLogEmbed(embed);
 });
+client.on("messageDeleteBulk", async (messageDeleteBulk) => {
+    if (messageDeleteBulk.size == null) return;
+    let embed = new EmbedBuilder()
+        .setDescription(`${messageDeleteBulk.size} messages has been deleted\n\n Messages:`)
+        .setColor("#ff0000")
+
+    messageDeleteBulk.forEach(message => {
+        embed.addFields(
+            {
+                name: ' ',
+                value: message
+            },
+        )
+    });
+
+    sendLogEmbed(embed);
+});
 //roles
 client.on("rolePermissionsUpdate", (role, oldPermissions, newPermissions) => {
     let embed = new EmbedBuilder()

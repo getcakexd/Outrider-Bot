@@ -21,7 +21,7 @@ module.exports = {
 
         if (await interaction.channel.bulkDelete(amount)
             .catch((error) => {
-                interaction.reply({content: "Unable to delete the messages", ephemeral: true})
+                interaction.reply({content: `Unable to delete the messages`, ephemeral: true})
 
                 console.log("[WARNING] Unable to delete the messages");
                 console.log(`[WARNING] ${error.message}`);
