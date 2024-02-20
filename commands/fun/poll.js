@@ -68,18 +68,15 @@ module.exports = {
         .setDMPermission(false),
     async execute(interaction) {
         await interaction.deferReply({ephemeral: true});
+        let color = interaction.options.getString('color') ?? 'Random';
         let options = await interaction.options.data;
-        let color = interaction.options.getString('color');
+        options = options.filter(option => option.name !== 'color');
         const emojis = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣"];
         let optionsLength = options.length;
 
         let poll = new EmbedBuilder().setTitle(`${options[0].value}`).setColor(color);
         for (let i = 1; i < optionsLength; i++) {
             let option = options[i];
-            if (option.name === 'color') {
-                optionsLength--;
-                continue;
-            }
             let emoji = emojis[i - 1];
             poll.addFields(
                 {
@@ -96,12 +93,8 @@ module.exports = {
         }
         await interaction.editReply({content: 'Poll successfully created'})
 
-        let pollData = `Title: ${options[0].value} \nOptions: `;
+        let pollData = `Title: ${options[0].value}\nColor: ${color}\nOptions: `;
         for (let i = 1; i < options.length; i++) {
-            if (options[i].name === 'color') {
-                optionsLength--;
-                continue;
-            }
             pollData += `${i}: ${options[i].value}; `;
         }
         console.log(`${interaction.user.username} (ID: ${interaction.user.id}) created a poll.`);
