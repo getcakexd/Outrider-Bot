@@ -25,11 +25,10 @@ function createModHelpEmbed() {
         .setColor("#e31956")
         .setTitle("Hey! I'm here to help.")
         .setDescription("Command list for administrators")
-        .setAuthor({name: "Outrider Knight#3668"})
         .addFields(
             {
                 name: `/echo`,
-                value: 'Echos the given message to the channel'
+                value: 'Echos the given message to the same channel'
             },
             {
                 name: `/dm`,
@@ -79,15 +78,14 @@ function createUserHelpEmbed() {
         .setColor("#00ff0b")
         .setTitle("Hey! I'm here to help.")
         .setDescription("Command list for users")
-        .setAuthor({name: "Outrider Knight#3668"})
         .addFields(
             {
                 name: `/ping`,
-                value: 'Check if the bot is online'
+                value: 'Check whether the bot is online'
             },
             {
                 name: `/invite`,
-                value: 'Creates a invite for this channel'
+                value: 'Creates an invite for this channel'
             },
             {
                 name: `/help`,
@@ -111,19 +109,7 @@ function createUserHelpEmbed() {
             },
             {
                 name: `/nsfw`,
-                value: 'Give yourself nsfw rank, or remove it'
-            },
-            {
-                name: `/butt`,
-                value: 'Sends a butt pic'
-            },
-            {
-                name: `/boobs`,
-                value: 'Sends a boob pic'
-            },
-            {
-                name: `/pussy`,
-                value: 'Sends a pussy pic'
+                value: 'See the nsfw help menu'
             },
         );
 }
