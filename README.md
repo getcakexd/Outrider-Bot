@@ -18,21 +18,34 @@ Getting Started
 
 Deployment
 ------------------
-For deployment on a cloud platform (e.g.: [Heroku](https://www.heroku.com)) make this change in the package.json file:
+Deployment on local machine
 
-Before
-```
-  "scripts": {
-    "start": "node deploy-commands.js && node index.js"
-  },
-```
-After
-```
-  "scripts": {
-    "build": "node deploy-commands.js",
-    "start": "node index.js"
-  },
-```
+    Use npm start
+      
+    OR
+    
+    Use node deploy-commands.js and node index.js
+  
+Deployment on local machine with auto restart on crash:
+
+     1. Move the restart.js file to the main directory
+     2. Use node restart.js
+        
+Deployment on a cloud platform (e.g.: [Heroku](https://www.heroku.com))
+  
+    Make this change in the package.json file:
+
+    Before:
+      "scripts": {
+        "start": "node deploy-commands.js && node index.js"
+      },
+      
+    After:
+      "scripts": {
+        "build": "node deploy-commands.js",
+        "start": "node index.js"
+      },
+      
 Important:
 - To deploy the bot successfully, move the ``Procfile`` to the main directory.
 - Due to the reddit api the ``/meme`` and ``/dankmeme`` commands don't work while the bot runs on a cloud platform.
@@ -53,3 +66,10 @@ For auto start up on your local Windows machine:
 For the official discord documentation click [here](https://discord.js.org/docs/packages/discord.js/14.14.1)
 
 Check out Node.js [here](https://nodejs.org)
+
+Used repositories
+------------------
+
+- [API for nsfw commands]( https://github.com/Allvaa/nekobot-api)
+- [Loging system](https://github.com/ertucuk/discord-logger-bot)
+
