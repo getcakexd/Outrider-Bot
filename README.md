@@ -73,5 +73,5 @@ Used repositories
 ------------------
 
 - [API for nsfw commands]( https://github.com/Allvaa/nekobot-api)
-- [Loging system](https://github.com/ertucuk/discord-logger-bot)
+- [Loging system](https://github.com/devdeem/Logger-Bot)
 
