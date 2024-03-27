@@ -8,6 +8,8 @@ However, this bot doesn't support multiple server use.
 
 Feel free to customize it to your needs.
 
+This bot was created using discord.js v14.14.1 and may not be compatible with future versions.
+
 Getting Started
 ------------------
 1. Follow the official [discord.js guide](https://discordjs.guide) to create your bot.
