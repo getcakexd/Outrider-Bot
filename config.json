@@ -2,6 +2,17 @@
   "token": "your-token-goes-here",
   "clientId": "your-application-id-goes-here",
   "guildId": "your-server-id-goes-here",
+  "channels": {
+    "channelLog": "CHANNEL_ID",
+    "emojiLog": "CHANNEL_ID",
+    "banLog": "CHANNEL_ID",
+    "unbanLog": "CHANNEL_ID",
+    "joinLog": "CHANNEL_ID",
+    "leaveLog": "CHANNEL_ID",
+    "messageLog": "CHANNEL_ID",
+    "voiceLog": "CHANNEL_ID"
+  },
+  "owner": "YOUR_ID",
   "ticketCategoryName": "your-ticket-category-name-goes-here",
   "welcomeRoleName": "your-default-role-name-goes-here",
   "welcomeChannelId": "your-welcome-channel-id-goes-here",

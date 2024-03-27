@@ -1,8 +1,8 @@
 module.exports = async (client, oldMessage, newMessage) => {
   const embedBuilder = require("../utils/embeds");
-  const cfg = require("../utils/config.json");
+  const cfg = require("../../config.json");
 
-  if (newMessage.guild.id !== cfg.guildID) return;
+  if (newMessage.guild.id !== cfg.guildId) return;
   if (newMessage.author.bot) return;
   if (!oldMessage.author) return;
 

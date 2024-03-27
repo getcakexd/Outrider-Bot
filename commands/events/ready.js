@@ -1,6 +1,6 @@
 module.exports = async (client) => {
   const { ActivityType } = require("discord.js");
-  const cfg = require("../utils/config.json");
+  const cfg = require("../../config.json");
 
   client.color = "#2b2d31";
   client.channelLogs = {
@@ -16,7 +16,7 @@ module.exports = async (client) => {
 
   setInterval(() => {
     client.user.setPresence({
-      activities: [{ name: `Logs | Made by @deemdev`, type: ActivityType.Watching }],
+      activities: [{ name: `Logs | Made by @getcakexd`, type: ActivityType.Watching }],
       status: "online",
     });
   }, 60000);
