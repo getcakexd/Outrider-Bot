@@ -19,7 +19,7 @@ for (const folder of commandFolders) {
         if ('data' in command && 'execute' in command) {
             commands.push(command.data.toJSON());
         } else {
-            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+            if (!(filePath.includes('events') || filePath.includes('utils'))) console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
         }
     }
 }
