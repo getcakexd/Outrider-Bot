@@ -51,6 +51,10 @@ function createModHelpEmbed() {
                 value: 'Times out the tagged member for the given given amount of time with the given reason'
             },
             {
+                name: `/slowmode`,
+                value: 'Makes a channel slowmode with the given amount of seconds'
+            },
+            {
                 name: '/lockdown',
                 value: 'Times out every user for the given amount of time'
             },
@@ -106,6 +110,10 @@ function createUserHelpEmbed() {
             {
                 name: `/ticket-create`,
                 value: 'Creates a dedicated ticket for your problem'
+            },
+            {
+              name: `/uptime`,
+              value: 'The time that the bot has been running for'
             },
             {
                 name: `/nsfw`,
