@@ -23,7 +23,7 @@ module.exports = {
         },
         {
           name: `Channel Category`,
-          value: `${channel.parent.name}`,
+          value: `${(channel.parent === null) ? "None" : channel.parent.name}`,
           inline: true,
         },
         {

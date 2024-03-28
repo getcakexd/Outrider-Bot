@@ -38,11 +38,11 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
         .setDMPermission(false),
     async execute(interaction) {
-        const name = await interaction.options.getString('name');
-        const type = parseInt(await interaction.options.getString('type'));
-        const locked = await interaction.options.getBoolean('locked');
-        const parentName = await interaction.options.getString('category-name');
-        const parentId = await interaction.options.getString('category-id');
+        const name = interaction.options.getString('name');
+        const type = interaction.options.getString('type');
+        const locked = interaction.options.getBoolean('locked');
+        const parentName = interaction.options.getString('category-name');
+        const parentId = interaction.options.getString('category-id');
         let channel;
 
         if (parentId) {
@@ -90,7 +90,7 @@ module.exports = {
         } else {
             channel = interaction.guild.channels.create({name: name, type: type});
             if (locked) {
-                await channel.permissionOverwrites.create(interaction.guild.roles.everyone, {ViewChannel: false})
+                await channel.permissionOverwrites.create(interaction.guild.roles.everyone, {ViewChannel: false});
             }
 
             interaction.reply({content: 'channel successfully created', ephemeral: true});
