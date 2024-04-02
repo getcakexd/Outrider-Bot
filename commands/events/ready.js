@@ -1,7 +1,7 @@
 module.exports = async (client) => {
   const { ActivityType } = require("discord.js");
   const cfg = require("../../config.json");
-  const activities = require("../../config.json");
+  const { activities } = require("../../config.json");
 
   client.color = "#2b2d31";
   client.channelLogs = {
