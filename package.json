@@ -1,6 +1,6 @@
 {
   "name": "your-bot-name-goes-here",
-  "version": "3.7.9",
+  "version": "3.8.3",
   "description": "your-description-goes-here",
   "main": "index.js",
   "scripts": {
