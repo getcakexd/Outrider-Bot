@@ -1,4 +1,5 @@
 const {SlashCommandBuilder, GuildMember, EmbedBuilder} = require('discord.js');
+const { nsfwRoleName } = require('./../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,39 +8,14 @@ module.exports = {
         .addStringOption(option => option
             .setName('confirmation')
             .setDescription('Type "confirm" to get the nsfw role or write "remove" to lose it')
+            .setRequired(true)
         )
         // .setNSFW(true)
         .setDMPermission(false),
     async execute(interaction) {
         const confirmation = interaction.options.getString('confirmation');
-        const nsfwRole = interaction.member.guild.roles.cache.find(role => role.name.toLowerCase() === "nsfw")
-        if (!confirmation) {
-          let nsfwHelpEmbed = new EmbedBuilder()
-              .setColor("#e31956")
-              .setTitle("Hey! I'm here to help.")
-              .setDescription("Nsfw command list")
-              .addFields(
-                  {
-                      name: '/nsfw `confirmation`',
-                      value: 'Give yourself nsfw rank, or remove it'
-                  },
-                  {
-                      name: `/butt`,
-                      value: 'Sends a butt pic'
-                  },
-                  {
-                      name: `/boobs`,
-                      value: 'Sends a boob pic'
-                  },
-                  {
-                      name: `/pussy`,
-                      value: 'Sends a pussy pic'
-                  },
-              );
-
-            await interaction.reply({content: " ", embeds: [nsfwHelpEmbed], ephemeral: true})
-
-        } else if (confirmation === 'confirm') {
+        const nsfwRole = interaction.member.guild.roles.cache.find(role => role.name === nsfwRoleName)
+        if (confirmation === 'confirm') {
             if (interaction.member.roles.cache.has(nsfwRole.id)) {
                 await interaction.reply({content: `You already have the ${nsfwRole.name} role`, ephemeral: true});
 

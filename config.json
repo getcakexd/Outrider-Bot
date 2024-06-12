@@ -18,5 +18,6 @@
   "welcomeChannelId": "your-welcome-channel-id-goes-here",
   "moderationLogChannelId": "your-moderation-log-channel-id-goes-here",
   "botName": "your-bot-name-goes-here",
-  "activities" : "your-bots-activity-goes-here"
+  "activities" : "your-bots-activity-goes-here",
+  "nsfwRoleName": "your-nsfw-role-name-goes-here"
 }
