@@ -23,7 +23,7 @@ module.exports = {
         if (method === 'take') {
             const newChannelName = channel.name + '-' + interaction.user.username;
 
-            channel.send(`<@${interaction.member.id}> took this ticket`);
+            channel.send(`<@${interaction.member.id}> took this ticket. They will help you with your issue.`);
             channel.setName(newChannelName);
 
             await interaction.reply({content: 'You successfully took this ticket', ephemeral: true});
@@ -31,6 +31,7 @@ module.exports = {
             console.log('');
 
         } else if (method === 'close') {
+            channel.send(`This ticket has been closed.`);
             interaction.guild.members.fetch().then(members => {
                 members.forEach(member => {
                     if (!member.permissions.has(PermissionsBitField.Flags.Administrator)) {

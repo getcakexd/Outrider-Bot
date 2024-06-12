@@ -17,6 +17,7 @@ module.exports = {
         }
 
         console.log(`${interaction.user.username} (ID: ${interaction.user.id}) used /help`)
+        console.log(" ")
     },
 };
 
