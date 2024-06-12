@@ -2,7 +2,7 @@ const {SlashCommandBuilder, PermissionFlagsBits, Guild, GuildMember} = require('
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('timeout')
+        .setName('timeout-set')
         .setDescription('Select a member and time them out for the given time.')
         .addUserOption(option => option
             .setName('target')
@@ -21,13 +21,12 @@ module.exports = {
                 {name: 'Minutes', value: '60000'},
                 {name: 'Hours', value: '3600000'},
                 {name: 'Days', value: '86400000'},
-                {name: 'Revoke', value: '0'}
             )
             .setRequired(true)
         )
         .addStringOption(option => option
             .setName('reason')
-            .setDescription('The reason for banning')
+            .setDescription('The reason for the timeout')
         )
         .setDefaultMemberPermissions(PermissionFlagsBits.MuteMembers)
         .setDMPermission(false),
@@ -49,20 +48,7 @@ module.exports = {
 
 
         if (length === 0) {
-            if (await target.timeout(null)
-                .catch((error) => {
-                    interaction.reply({content: `Can't revoke timeout on ${target.user.username}`, ephemeral: true});
-
-                    console.log(`[WARNING] Can't revoke timeout on ${target.user.username}`);
-                    console.log(`[WARNING] ${error.message}`);
-                    console.log("");
-                })
-            ) {
-                await interaction.reply(`Successfully revoked timeout on ${target.user.username} reason: ${reason}`);
-
-                console.log(`${interaction.user.username} (ID: ${interaction.user.id}) revoked timeout on ${target.user.username} (ID: ${target.user.id}) reason: "${reason}"`);
-                console.log(" ");
-            }
+            interaction.reply({content: "Timeout length can't be 0"})
         } else {
             if (await target.timeout(lengthMilliseconds, reason)
                 .catch((error) => {

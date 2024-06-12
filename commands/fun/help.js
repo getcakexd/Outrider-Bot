@@ -47,32 +47,44 @@ function createModHelpEmbed() {
                 value: 'Bans the tagged member for the given reason'
             },
             {
-                name: `/timeout`,
+                name: `/timeout-set`,
                 value: 'Times out the tagged member for the given given amount of time with the given reason'
+            },
+            {
+                name: `/timeout-revoke`,
+                value: 'Revokes the time out from the tagged member'
             },
             {
                 name: `/slowmode`,
                 value: 'Makes a channel slowmode with the given amount of seconds'
             },
             {
-                name: '/lockdown',
+                name: '/lockdown-set',
                 value: 'Times out every user for the given amount of time'
             },
             {
-                name: `/role`,
-                value: 'Adds/removes the chosen role to/from the tagged member'
+                name: '/lockdown-remove',
+                value: 'Removes the lockdown'
+            },
+            {
+                name: `/role-add`,
+                value: 'Adds the chosen role to the tagged member'
+            },
+            {
+                name: `/role-add`,
+                value: 'Removes the chosen role from the tagged member'
             },
             {
                 name: `/delete`,
                 value: 'Deletes the given amount of messages in the channel'
             },
             {
-                name: `/channel-delete`,
-                value: 'Delete a channel by name or id'
-            },
-            {
                 name: `/channel-create`,
                 value: 'Create a new channel'
+            },
+            {
+                name: `/channel-delete`,
+                value: 'Delete a channel by name or id'
             },
         );
 }
@@ -117,7 +129,7 @@ function createUserHelpEmbed() {
             },
             {
                 name: `/nsfw`,
-                value: 'See the nsfw help menu'
+                value: 'Give yourself the nsfw role'
             },
         );
 }
