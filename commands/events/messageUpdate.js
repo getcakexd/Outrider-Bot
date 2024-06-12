@@ -3,7 +3,6 @@ module.exports = async (client, oldMessage, newMessage) => {
   const cfg = require("../../config.json");
 
   if (newMessage.guild.id !== cfg.guildId) return;
-  if (newMessage.author.bot) return;
   if (!oldMessage.author) return;
 
   await client.channelLogs.messageLog.send({
