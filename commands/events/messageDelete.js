@@ -1,18 +1,11 @@
 const cfg = require("../../config.json");
+const embedBuilder = require("../utils/embeds");
 module.exports = async (client, message) => {
-  const embedBuilder = require("../utils/embeds");
-  const cfg = require("../../config.json");
-
-  try {
+    const embedBuilder = require("../utils/embeds");
+    const cfg = require("../../config.json");
     if (message.guild.id !== cfg.guildId) return;
-    if (message.author.bot) return;
-  } catch (exeption) {
-      console.log(`[ERROR] An error occurred while managing events`)
-      console.log(`[ERROR] ${exeption}`)
-      console.log(" ")
-  }
 
-  await client.channelLogs.messageLog.send({
-    embeds: [embedBuilder.messageD(client, message)],
-  });
+    await client.channelLogs.messageLog.send({
+        embeds: [embedBuilder.messageD(client, message)],
+    });
 };
