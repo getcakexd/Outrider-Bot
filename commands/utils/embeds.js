@@ -424,40 +424,46 @@ module.exports = {
 
   // Event: messageDelete
   messageD: (client, message) => {
-    var date = Date.now();
+      var date = Date.now();
+      var messageDelete = new EmbedBuilder().setColor(client.color)
+      try {
+          messageDelete
+              .setAuthor({
+                  name: `Message has been deleted`,
+                  iconURL: client.user.displayAvatarURL({ dynamic: true }),
+              })
+              .setThumbnail(
+                  "https://cdn.discordapp.com/emojis/830790543659368448.webp?size=96&quality=lossless"
+              )
+              .setDescription(
+                  [
+                      `### User Information`,
+                      `Name: **${message.author.username}**`,
+                      `Mention: <@${message.author.id}>`,
+                      `ID: **${message.author.id}**`,
+                  ].join("\n")
+              )
+              .addFields(
+                  {
+                      name: `Message`,
+                      value: `${message}`,
+                      inline: true,
+                  },
+                  {
+                      name: `In`,
+                      value: `<#${message.channel.id}>`,
+                      inline: true,
+                  },
+                  { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+              );
+      } catch (e) {
 
-    const messageDelete = new EmbedBuilder()
-      .setColor(client.color)
-      .setAuthor({
-        name: `Message has been deleted`,
-        iconURL: client.user.displayAvatarURL({ dynamic: true }),
-      })
-      .setThumbnail(
-        "https://cdn.discordapp.com/emojis/830790543659368448.webp?size=96&quality=lossless"
-      )
-      .setDescription(
-        [
-          `### User Information`,
-          `Name: **${message.author.username}**`,
-          `Mention: <@${message.author.id}>`,
-          `ID: **${message.author.id}**`,
-        ].join("\n")
-      )
-      .addFields(
-        {
-          name: `Message`,
-          value: `${message}`,
-          inline: true,
-        },
-        {
-          name: `In`,
-          value: `<#${message.channel.id}>`,
-          inline: true,
-        },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
-      );
-
-    return messageDelete;
+          console.log("[ERROR] Unable to create embed the messages");
+          console.log(`[ERROR] ${error.message}`);
+          console.log('');
+      } finally {
+          return messageDelete;
+      }
   },
 
   // Event: messageUpdate
